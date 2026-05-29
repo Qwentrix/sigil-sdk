@@ -141,3 +141,31 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# ── Project-specific (sigil-sdk) ──────────────────────────────
+# OS files
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# Editor/IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build output (compiled TypeScript)
+dist/
+
+# Local env overrides (keep .env.example tracked)
+.env.local
+.env.*.local
+
+# Signing keys / secrets — never commit (ed25519 verification fixtures)
+*.pem
+*.key
+*.pfx
+*.p12
+ed25519_*

@@ -1,0 +1,66 @@
+{
+  "name": "@qwentrix/sigil",
+  "version": "0.1.0",
+  "description": "Micelium Sigil — TypeScript/Node.js SDK for embedding governance into AI agents.",
+  "license": "Apache-2.0",
+  "author": "Qwentrix Inc.",
+  "homepage": "https://sigil.micelium.com/docs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Qwentrix/sigil-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Qwentrix/sigil-sdk/issues"
+  },
+  "keywords": [
+    "ai-governance",
+    "agent",
+    "sigil",
+    "micelium",
+    "dlp",
+    "audit"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "tweetnacl": "^1.0.3",
+    "undici": "^6.0.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.0.0"
+  }
+}

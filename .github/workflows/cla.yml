@@ -1,0 +1,33 @@
+name: CLA Assistant
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_target:
+    types: [opened, closed, synchronize]
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+  statuses: write
+
+jobs:
+  cla-check:
+    runs-on: ubuntu-latest
+    # Skip the check for members of the Qwentrix org (committers already covered by employment agreement).
+    if: github.event.comment.body == 'recheck' || github.event_name == 'pull_request_target'
+    steps:
+      - name: CLA Assistant
+        uses: contributor-assistant/github-action@v2.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.CLA_ASSISTANT_PAT }}
+        with:
+          # Path inside the repo where CLA signatures are stored.
+          path-to-signatures: .github/cla-signatures.json
+          path-to-document: https://cla-assistant.io/Qwentrix/sigil-sdk
+          # Branch that stores the CLA signatures file.
+          branch: main
+          # Allowlist — Qwentrix bot accounts that don't need to sign.
+          allowlist: qwentrix-bot,dependabot[bot],github-actions[bot]
